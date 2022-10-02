@@ -11,6 +11,9 @@ if (MSVC)
     if (VS_LINK_STATIC_MT)
         set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
     endif()
+
+    # 定义 UNICODE 宏，使用 UNICODE
+    add_definitions("-DUNICODE" "-D_UNICODE")
 endif()
 
 add_executable(redow)
@@ -21,9 +24,10 @@ target_sources(
     "src/main.cpp"
     "src/redow.h"
     "src/redow.cpp"
-)
+ "src/redis.h" "src/redis.cpp")
 
 target_link_libraries(
     redow
     Shlwapi.lib
+    ws2_32.lib
 )

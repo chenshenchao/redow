@@ -2,6 +2,7 @@
 #include <Windows.h>
 #include <Shlwapi.h>
 #include <strsafe.h>
+#include "redis.h"
 
 HANDLE pipeIn = NULL;
 HANDLE pipeOut = NULL;
@@ -110,6 +111,7 @@ void RedowStartRedis()
 
 void RedowStopRedis()
 {
+	RedisSave();
 	RedowClear();
 }
 
