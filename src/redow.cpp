@@ -38,7 +38,7 @@ BOOL RedowInit()
 	else
 	{
 		OutputDebugStringW(args[0]);
-		OutputDebugString(TEXT("redow get workdir failed."));
+		OutputDebugStringW(L"redow get workdir failed.");
 		HeapFree(GetProcessHeap(), 0, args);
 		return FALSE;
 	}
@@ -46,26 +46,26 @@ BOOL RedowInit()
 
 void RedowClear()
 {
-	OutputDebugString(TEXT("redow clear start."));
+	OutputDebugStringW(L"redow clear start.");
 	if (NULL != pipeIn)
 	{
 		CloseHandle(pipeIn);
 		pipeIn = NULL;
-		OutputDebugString(TEXT("redow close pipe in."));
+		OutputDebugStringW(L"redow close pipe in.");
 	}
 
 	if (NULL != pipeOut)
 	{
 		CloseHandle(pipeOut);
 		pipeOut = NULL;
-		OutputDebugString(TEXT("redow close pipe out."));
+		OutputDebugStringW(L"redow close pipe out.");
 	}
 
 	if (NULL != process.hThread)
 	{
 		CloseHandle(process.hThread);
 		process.hThread = NULL;
-		OutputDebugString(TEXT("redow close close thread."));
+		OutputDebugStringW(L"redow close close thread.");
 	}
 
 	if (NULL != process.hProcess)
@@ -73,9 +73,9 @@ void RedowClear()
 		TerminateProcess(process.hProcess, 0);
 		CloseHandle(process.hProcess);
 		process.hProcess = NULL;
-		OutputDebugString(TEXT("redow close close process."));
+		OutputDebugStringW(L"redow close close process.");
 	}
-	OutputDebugString(TEXT("redow clear end."));
+	OutputDebugStringW(L"redow clear end.");
 }
 
 void RedowStartRedis()
@@ -89,7 +89,7 @@ void RedowStartRedis()
 	{
 		return RedowClear();
 	}
-	OutputDebugString(TEXT("redow create pipe."));
+	OutputDebugStringW(L"redow create pipe.");
 
 	STARTUPINFOW si = { 0 };
 	si.cb = sizeof(si);
@@ -101,8 +101,8 @@ void RedowStartRedis()
 	if (!CreateProcessW(NULL, RedowCommand, NULL, NULL, TRUE, CREATE_NO_WINDOW, NULL, WorkDir, &si, &process))
 	{
 		TCHAR emsg[400];
-		StringCchPrintf(emsg, 40, TEXT("create process error code: %d"), GetLastError());
-		OutputDebugString(emsg);
+		StringCchPrintfW(emsg, 40, L"create process error code: %d", GetLastError());
+		OutputDebugStringW(emsg);
 		return RedowClear();
 	}
 
