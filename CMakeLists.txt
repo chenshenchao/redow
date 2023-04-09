@@ -1,5 +1,9 @@
 ﻿cmake_minimum_required(VERSION 3.23)
 
+if (NOT WIN32)
+	message(FATAL_ERROR "must Windows.")
+endif()
+
 project(redow LANGUAGES CXX)
 
 if (MSVC)

@@ -5,6 +5,8 @@ set_target_properties(
 	PROPERTIES
 	CXX_STANDARD_REQUIRED ON
 	CXX_STANDARD 20
+    OUTPUT_NAME Redow
+    SUFFIX ".exe"
 )
 
 if (VS_LINK_STATIC_MT)
