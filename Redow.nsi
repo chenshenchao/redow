@@ -18,7 +18,7 @@ UninstPage instfiles
 Section "Install"
     SectionIn RO
     SetOutPath "$INSTDIR"
-    File /oname=redow.exe "out\build\x64-Release\redow.exe"
+    File /oname=redow.exe "out\build\x64-Release\redow\Redow.exe"
     File /r "bin"
     WriteUninstaller "$INSTDIR\uninstall.exe"
 

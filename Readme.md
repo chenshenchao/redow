@@ -12,6 +12,14 @@ install Redis(7.0.14) server with Redow.
 
 # Compile
 
+install [Msys2](https://www.msys2.org/).
+
 ```bash
+# update
+pacman -Syu
+
+# install tools.
 pacman -Sy gcc make pkg-config
 ```
+
+add msys2 directory and it's "usr/bin" into environment variable PATH.
