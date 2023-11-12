@@ -1,5 +1,7 @@
 add_executable(redow)
 
+add_dependencies(redow redis)
+
 set_target_properties(
 	redow
 	PROPERTIES
@@ -17,7 +19,7 @@ if (VS_LINK_STATIC_MT)
 	)
 endif()
 
-# 定义 UNICODE 宏，使用 UNICODE
+# 瀹氫箟 UNICODE 瀹忥紝浣跨敤 UNICODE
 target_compile_definitions(
     redow
     PRIVATE
