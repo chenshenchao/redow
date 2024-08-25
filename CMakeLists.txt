@@ -1,4 +1,19 @@
-cmake_minimum_required(VERSION 3.24)
+﻿cmake_minimum_required(VERSION 3.24)
+
+set(ENV_HTTP_PROXY "" CACHE STRING "set env HTTP_PROXY.")
+set(ENV_HTTPS_PROXY "" CACHE STRING "set env HTTPS_PROXY.")
+
+if (NOT ${ENV_HTTP_PROXY} STREQUAL "")
+    message(STATUS "set http proxy: ${ENV_HTTP_PROXY}")
+    set(ENV{HTTP_PROXY} ${ENV_HTTP_PROXY})
+endif()
+
+
+if (NOT ${ENV_HTTPS_PROXY} STREQUAL "")
+    message(STATUS "set https proxy: ${ENV_HTTPS_PROXY}")
+    set(ENV{HTTPS_PROXY} ${ENV_HTTPS_PROXY})
+endif()
+
 
 include("cmake/Redis.cmake")
 
